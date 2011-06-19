@@ -21,10 +21,10 @@ set :deploy_to, "/home/flint/projects/cook_book"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
-#set :default_environment, {
-#  'PATH' => '/usr/local/rvm/gems/ruby-1.9.2-p180@cook_book/bin:/usr/local/rvm/gems/ruby-1.9.2-p180@global/bin:/usr/local/rvm/rubies/ruby-1.9.2-p180/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
-#  'RUBY_VERSION' => 'ruby 1.9.2',
-#  'GEM_HOME'     => '/usr/local/rvm/gems/ruby-1.9.2-p180@cook_book',
-#  'GEM_PATH'     => '/usr/local/rvm/gems/ruby-1.9.2-p180@cook_book:/usr/local/rvm/gems/ruby-1.9.2-p180@global',
-#  'BUNDLE_PATH'  => '/usr/local/rvm/gems/ruby-1.9.2-p180@cook_book'  # If you are using bundler.
-#}
+set :default_environment, {
+  'PATH' => '/usr/local/rvm/gems/ruby-1.9.2-p180@cook_book/bin:/usr/local/rvm/gems/ruby-1.9.2-p180@global/bin:/usr/local/rvm/rubies/ruby-1.9.2-p180/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
+  'RUBY_VERSION' => 'ruby 1.9.2',
+  'GEM_HOME'     => '/usr/local/rvm/gems/ruby-1.9.2-p180@cook_book',
+  'GEM_PATH'     => '/usr/local/rvm/gems/ruby-1.9.2-p180@cook_book:/usr/local/rvm/gems/ruby-1.9.2-p180@global',
+  'BUNDLE_PATH'  => '/usr/local/rvm/gems/ruby-1.9.2-p180@cook_book'  # If you are using bundler.
+}
