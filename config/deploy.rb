@@ -28,3 +28,9 @@ set :default_environment, {
   'GEM_PATH'     => '/usr/local/rvm/gems/ruby-1.9.2-p180@cook_book:/usr/local/rvm/gems/ruby-1.9.2-p180@global',
   #'BUNDLE_PATH'  => '/usr/local/rvm/gems/ruby-1.9.2-p180@cook_book'  # If you are using bundler.
 }
+
+namespace :deploy do
+  task :restart
+	run 'bundle install'
+  end
+end
