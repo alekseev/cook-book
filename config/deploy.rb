@@ -30,7 +30,7 @@ set :default_environment, {
 }
 
 namespace :deploy do
-  task :restart
+  task :restart do
 	run 'bundle install'
   end
 end
