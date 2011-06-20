@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @category.title %>
+</p>
+
+<p>
+  <b>Deleted:</b>
+  <%= @category.deleted %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
+
+<h2>Foods:</h2>
+<ul>
+<% @foods.map do |food|%>
+<li><%= link_to food.title, food %></li>
+<% end %>
+</ul>

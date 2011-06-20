@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @food.title %>
+</p>
+
+<p>
+  <b>Recipe:</b>
+  <%= @food.recipe %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @food.category_id %>
+</p>
+
+<p>
+  <b>Deleted:</b>
+  <%= @food.deleted %>
+</p>
+
+
+<%= link_to 'Edit', edit_food_path(@food) %> |
+<%= link_to 'Back', foods_path %>
