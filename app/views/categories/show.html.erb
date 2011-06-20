@@ -15,8 +15,7 @@
 <%= link_to 'Back', categories_path %>
 
 <h2>Foods:</h2>
-<ul>
-<% @foods.map do |food|%>
-<li><%= link_to food.title, food %></li>
-<% end %>
-</ul>
+<table id="foods-list">
+<%= render :partial => 'foods/foods', :locals => {:foods => @category.foods} %>
+</table>
+<%= link_to 'New Food', new_food_path(:category => @category.id) %>

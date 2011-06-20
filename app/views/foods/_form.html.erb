@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br />
-    <%= f.select :category_id, options_from_collection_for_select(@categories, :id, :title) %>
+    <%= f.select :category_id, options_from_collection_for_select(@categories, :id, :title, params[:category]) %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -77,10 +77,12 @@ class CategoriesController < ApplicationController
     #@category.destroy
     @category.deleted = true
     @category.save
+    @categories = Category.not_deleted
 
     respond_to do |format|
       format.html { redirect_to(categories_url) }
       format.xml  { head :ok }
+      format.js   { render "_categories" }
     end
   end
 end

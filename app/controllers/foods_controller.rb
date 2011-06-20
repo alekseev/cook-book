@@ -24,7 +24,7 @@ class FoodsController < ApplicationController
   # GET /foods/new
   # GET /foods/new.xml
   def new
-    load_categories
+    @categories = Category.not_deleted
     @food = Food.new
 
     respond_to do |format|
@@ -35,7 +35,7 @@ class FoodsController < ApplicationController
 
   # GET /foods/1/edit
   def edit
-    load_categories
+    @categories = Category.not_deleted
     @food = Food.not_deleted.find(params[:id])
   end
 
@@ -78,16 +78,12 @@ class FoodsController < ApplicationController
     #@food.destroy
     @food.deleted = true
     @food.save
+    @foods = Food.not_deleted
 
     respond_to do |format|
       format.html { redirect_to(foods_url) }
       format.xml  { head :ok }
+      format.js   { render "_foods" }
     end
-  end
-
-  private
-
-  def load_categories
-    @categories = Category.not_deleted
   end
 end
