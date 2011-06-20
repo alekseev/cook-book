@@ -1,22 +1,20 @@
   <tr>
-    <th>Title</th>
-    <th>Recipe</th>
-    <th>Category</th>
-    <th></th>
+    <th><a href="?sort=title">Название</a></th>
+    <th><a href="?sort=date">Дата создания</a></th>
+    <th>Категория</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @foods.each do |food| %>
   <tr>
-    <td><%= food.title %></td>
-    <td><%= food.recipe %></td>
+    <td><%= link_to food.title, food %></td>
+    <td><%= food.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
     <td><%= food.category.title %></td>
-    <td><%= link_to 'Show', food %></td>
-    <td><%= link_to 'Edit', edit_food_path(food) %></td>
-    <td><%= link_to 'Destroy', food, :method => :delete,
+    <td><%= link_to 'Редактировать', edit_food_path(food) %></td>
+    <td><%= link_to 'Удалить', food, :method => :delete,
                        :remote => true,
-                       :confirm => 'Are you sure?',
+                       :confirm => 'Вы уверены?',
                        :class => 'remote_del',
                        :'data-container' => 'foods-list' %></td>
   </tr>

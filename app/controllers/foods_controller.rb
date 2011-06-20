@@ -2,7 +2,14 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.xml
   def index
-    @foods = Food.not_deleted
+    if params[:sort] == "title"
+      order = "title"
+    elsif params[:sort] == "date"
+      order = "created_at"
+    elsif
+      order = "created_at"
+    end
+    @foods = Food.not_deleted.order(order + " ASC")
 
     respond_to do |format|
       format.html # index.html.erb

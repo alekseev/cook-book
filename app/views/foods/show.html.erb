@@ -1,25 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
+  <b>Название:</b>
   <%= @food.title %>
 </p>
 
 <p>
-  <b>Recipe:</b>
+  <b>Рецепт:</b>
   <%= @food.recipe %>
 </p>
 
 <p>
-  <b>Category:</b>
-  <%= @food.category_id %>
+  <b>Категория:</b>
+  <%= @food.category.title %>
 </p>
 
-<p>
-  <b>Deleted:</b>
-  <%= @food.deleted %>
-</p>
-
-
-<%= link_to 'Edit', edit_food_path(@food) %> |
-<%= link_to 'Back', foods_path %>
+<%= link_to 'Редактировать', edit_food_path(@food) %> |
+<%= link_to 'Назад', category_path(@food.category) %>

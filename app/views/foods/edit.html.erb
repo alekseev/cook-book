@@ -1,6 +1,6 @@
-<h1>Editing food</h1>
+<h1>Редактирование блюда</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @food %> |
-<%= link_to 'Back', foods_path %>
+<%= link_to 'Показать', @food %> |
+<%= link_to 'Назад', category_path(@food.category) %>

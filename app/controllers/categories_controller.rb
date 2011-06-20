@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @categories }
+      format.xml  { render :xml => @categories, :include => :foods }
     end
   end
 
@@ -14,7 +14,14 @@ class CategoriesController < ApplicationController
   # GET /categories/1.xml
   def show
     @category = Category.not_deleted.find(params[:id])
-    @foods = @category.foods.not_deleted
+    if params[:sort] == "title"
+      order = "title"
+    elsif params[:sort] == "date"
+      order = "created_at"
+    elsif
+      order = "created_at"
+    end
+    @foods = @category.foods.not_deleted.order(order + " ASC")
 
     respond_to do |format|
       format.html # show.html.erb

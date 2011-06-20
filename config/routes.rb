@@ -1,9 +1,10 @@
 CookBook::Application.routes.draw do
+
   resources :foods
 
   resources :categories
 
-  root :to => "categories#index"
+  root :to => "index#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

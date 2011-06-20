@@ -1,21 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
-  <%= @category.title %>
+  <b>Название:</b>
+  <%= @category.title %> (<%= link_to 'редактировать', edit_category_path(@category) %>)
 </p>
 
-<p>
-  <b>Deleted:</b>
-  <%= @category.deleted %>
-</p>
-
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
-
-<h2>Foods:</h2>
+<h3>Список блюд:</h3>
 <table id="foods-list">
 <%= render :partial => 'foods/foods', :locals => {:foods => @category.foods} %>
 </table>
-<%= link_to 'New Food', new_food_path(:category => @category.id) %>
+<%= link_to 'Добавить блюдо', new_food_path(:category => @category.id) %>
