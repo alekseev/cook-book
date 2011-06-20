@@ -2,7 +2,7 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.xml
   def index
-    @foods = Food.all
+    @foods = Food.not_deleted
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class FoodsController < ApplicationController
   # GET /foods/1
   # GET /foods/1.xml
   def show
-    @food = Food.find(params[:id])
+    @food = Food.not_deleted.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +36,7 @@ class FoodsController < ApplicationController
   # GET /foods/1/edit
   def edit
     load_categories
-    @food = Food.find(params[:id])
+    @food = Food.not_deleted.find(params[:id])
   end
 
   # POST /foods
@@ -58,7 +58,7 @@ class FoodsController < ApplicationController
   # PUT /foods/1
   # PUT /foods/1.xml
   def update
-    @food = Food.find(params[:id])
+    @food = Food.not_deleted.find(params[:id])
 
     respond_to do |format|
       if @food.update_attributes(params[:food])
@@ -74,7 +74,7 @@ class FoodsController < ApplicationController
   # DELETE /foods/1
   # DELETE /foods/1.xml
   def destroy
-    @food = Food.find(params[:id])
+    @food = Food.not_deleted.find(params[:id])
     #@food.destroy
     @food.deleted = true
     @food.save
@@ -88,6 +88,6 @@ class FoodsController < ApplicationController
   private
 
   def load_categories
-    @categories = Category.all
+    @categories = Category.not_deleted
   end
 end
