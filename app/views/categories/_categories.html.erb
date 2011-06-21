@@ -1,11 +1,13 @@
 <tr>
   <th>Название</th>
+  <th>Кол-во блюд</th>
   <th></th>
   <th></th>
 </tr>
 <% @categories.each do |category| %>
   <tr>
     <td><%= link_to category.title, category %></td>
+    <td><%= category.foods.not_deleted.length %></td>
     <td><%= link_to 'Редактировать', edit_category_path(category) %></td>
     <td><%= link_to 'Удалить', category, :method => :delete,
     									 :remote => true,
