@@ -90,7 +90,7 @@ class FoodsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(foods_url) }
       format.xml  { head :ok }
-      format.js   { render "_foods" }
+      format.js   { render "_foods" } # аяксовая перезагрузка списка блюд
     end
   end
 end

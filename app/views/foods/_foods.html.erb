@@ -10,7 +10,7 @@
   <tr>
     <td><%= link_to food.title, food %></td>
     <td><%= food.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
-    <td><%= food.category.title %></td>
+    <td><%= food.category.deleted? ? "Без категории" : food.category.title %></td>
     <td><%= link_to 'Редактировать', edit_food_path(food) %></td>
     <td><%= link_to 'Удалить', food, :method => :delete,
                        :remote => true,

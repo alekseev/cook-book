@@ -12,7 +12,7 @@
 
 <p>
   <b>Категория:</b>
-  <%= @food.category.title %>
+  <%= @food.category.deleted? ? "Без категории" : @food.category.title %>
 </p>
 
 <%= link_to 'Редактировать', edit_food_path(@food) %> |

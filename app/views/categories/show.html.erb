@@ -5,8 +5,10 @@
   <%= @category.title %> (<%= link_to 'редактировать', edit_category_path(@category) %>)
 </p>
 
+<% unless @category.existing_foods.empty? %>
 <h3>Список блюд:</h3>
 <table id="foods-list">
-<%= render :partial => 'foods/foods', :locals => {:foods => @category.foods} %>
+<%= render :partial => 'foods/foods', :locals => {:foods => @category.existing_foods} %>
 </table>
+<% end %>
 <%= link_to 'Добавить блюдо', new_food_path(:category => @category.id) %>

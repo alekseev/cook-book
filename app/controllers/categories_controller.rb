@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @categories, :include => :foods }
+      format.xml  { render :xml => @categories, :include => :existing_foods } # категории с едой
     end
   end
 
@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1.xml
   def show
     @category = Category.not_deleted.find(params[:id])
+    # простейший вариант сортировки
     if params[:sort] == "title"
       order = "title"
     elsif params[:sort] == "date"
@@ -21,7 +22,7 @@ class CategoriesController < ApplicationController
     elsif
       order = "created_at"
     end
-    @foods = @category.foods.not_deleted.order(order + " ASC")
+    @foods = @category.existing_foods.order(order + " ASC")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -82,14 +83,13 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.not_deleted.find(params[:id])
     #@category.destroy
-    @category.deleted = true
-    @category.save
+    @category.update_attribute(:deleted, true)
     @categories = Category.not_deleted
 
     respond_to do |format|
       format.html { redirect_to(categories_url) }
       format.xml  { head :ok }
-      format.js   { render "_categories" }
+      format.js   { render "_categories" } # аяксовая перезагрузка списка категорий
     end
   end
 end
